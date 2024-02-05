@@ -1462,7 +1462,7 @@
     prop-types "15.8.1"
     react-native-keyboard-aware-scroll-view "^0.9.3"
 
-"@modules/splash@file:./modules/splash/":
+"@modules/splash@file:./modules/splash":
   version "1.0.0"
 
 "@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1":
@@ -6160,10 +6160,10 @@ metro-core@0.73.9:
     lodash.throttle "^4.1.1"
     metro-resolver "0.73.9"
 
-metro-file-map@0.73.9:
-  version "0.73.9"
-  resolved "https://registry.yarnpkg.com/metro-file-map/-/metro-file-map-0.73.9.tgz#09c04a8e8ef1eaa6ecb2b9cb8cb53bb0fa0167ec"
-  integrity sha512-R/Wg3HYeQhYY3ehWtfedw8V0ne4lpufG7a21L3GWer8tafnC9pmjoCKEbJz9XZkVj9i1FtxE7UTbrtZNeIILxQ==
+metro-file-map@0.73.9, metro-file-map@0.76.0:
+  version "0.76.0"
+  resolved "https://registry.yarnpkg.com/metro-file-map/-/metro-file-map-0.76.0.tgz#a27586bd4e22112864e76ba49bda6bb851bf5e49"
+  integrity sha512-ifhMf75SlkSR8QcRBK1ecDwt9APZNEMWG7U8RIhtoDAtBYKuTbjjHNJiAwAU8UPE78m/Aryz6A+5cwpuAvSGrA==
   dependencies:
     abort-controller "^3.0.0"
     anymatch "^3.0.3"

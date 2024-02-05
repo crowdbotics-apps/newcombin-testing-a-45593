@@ -1,5 +1,5 @@
 import React from "react";
-import opts from "./../modules/*/options.js";
+import opts from "./modules/*/options.js";
 import { modulesOptions, globalOptions } from "./options";
 let options = {};
 opts.map(opt => {
