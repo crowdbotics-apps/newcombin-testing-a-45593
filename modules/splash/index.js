@@ -1,44 +1,40 @@
-import React, { useEffect, useContext } from "react";
-import { View } from "react-native";
-import PropTypes from "prop-types";
-import { OptionsContext } from "@options";
+import React, { useEffect, useContext } from 'react'
+import { View } from 'react-native'
+import PropTypes from 'prop-types'
+import { OptionsContext } from '@options'
 
-const Splash = ({
-  duration,
-  onDurationEnd
-}) => {
-  const options = useContext(OptionsContext);
+const Splash = ({ duration, onDurationEnd }) => {
+  const options = useContext(OptionsContext)
 
   const handleDurationEnd = () => {
-    options.hide();
+    options.hide()
 
     if (onDurationEnd) {
-      onDurationEnd();
+      onDurationEnd()
     }
 
     if (options.onDurationEnd) {
-      options.onDurationEnd();
+      options.onDurationEnd()
     }
-  };
+  }
 
   useEffect(() => {
     if (duration || options.duration) {
       setTimeout(() => {
-        handleDurationEnd();
-      }, duration || options.duration);
+        handleDurationEnd()
+      }, duration || options.duration)
     } else {
-      handleDurationEnd();
+      handleDurationEnd()
     }
-  }, []);
-  return <View>
-    </View>;
-};
+  }, [])
+  return <View></View>
+}
 
 Splash.propTypes = {
   duration: PropTypes.number,
   onDurationEnd: PropTypes.func
-};
+}
 export default {
-  title: "Splash",
+  title: 'Splash',
   navigator: Splash
-};
+}

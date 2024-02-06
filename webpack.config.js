@@ -28,28 +28,28 @@
  * For web-specific code inside a common module, refer to the documentation:
  * https://necolas.github.io/react-native-web/docs/multi-platform/#web-specific-code
  */
-const path = require("path")
-const webpack = require("webpack")
-const HTMLWebpackPlugin = require("html-webpack-plugin")
-const babelOptions = require("./babel.config.js")
+const path = require('path')
+const webpack = require('webpack')
+const HTMLWebpackPlugin = require('html-webpack-plugin')
+const babelOptions = require('./babel.config.js')
 const appDirectory = path.resolve(__dirname)
 
 const isProduction =
-  process.argv[process.argv.indexOf("--mode") + 1] === "production"
+  process.argv[process.argv.indexOf('--mode') + 1] === 'production'
 
 const html_template_path = isProduction
-  ? "./public/django_index.html"
-  : "./public/index.html"
+  ? './public/django_index.html'
+  : './public/index.html'
 
 const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
   template: path.resolve(appDirectory, html_template_path),
-  filename: "index.html",
+  filename: 'index.html',
   inject: false
 })
 
 const DevEnvPlugin = new webpack.DefinePlugin({
-  __DEV__: process.env.NODE_ENV !== "production" || true,
-  "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
+  __DEV__: process.env.NODE_ENV !== 'production' || true,
+  'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
 })
 
 const JestWorkerPlugin = new webpack.EnvironmentPlugin({ JEST_WORKER_ID: null })
@@ -63,16 +63,16 @@ const babelLoaderConfiguration = {
   test: /\.js$/,
   // Add every directory that needs to be compiled by Babel during the build.
   include: [
-    path.resolve(appDirectory, "index.js"),
-    path.resolve(appDirectory, "App.js"),
-    path.resolve(appDirectory, "modules"),
-    path.resolve(appDirectory, "screens"),
-    path.resolve(appDirectory, "options"),
-    path.resolve(appDirectory, "store"),
-    path.resolve(appDirectory, "node_modules/react-native-reanimated")
+    path.resolve(appDirectory, 'index.js'),
+    path.resolve(appDirectory, 'App.js'),
+    path.resolve(appDirectory, 'modules'),
+    path.resolve(appDirectory, 'screens'),
+    path.resolve(appDirectory, 'options'),
+    path.resolve(appDirectory, 'store'),
+    path.resolve(appDirectory, 'node_modules/react-native-reanimated')
   ],
   use: {
-    loader: "babel-loader",
+    loader: 'babel-loader',
     options: babelOptions
   }
 }
@@ -81,9 +81,9 @@ const babelLoaderConfiguration = {
 const imageLoaderConfiguration = {
   test: /\.(gif|jpe?g|png|svg)$/,
   use: {
-    loader: "url-loader",
+    loader: 'url-loader',
     options: {
-      name: "[name].[ext]",
+      name: '[name].[ext]',
       esModule: false
     }
   }
@@ -91,7 +91,7 @@ const imageLoaderConfiguration = {
 
 const typescriptLoaderConfiguration = {
   test: /\.tsx?$/,
-  use: "ts-loader",
+  use: 'ts-loader',
   exclude: /node_modules/
 }
 
@@ -99,13 +99,13 @@ const babelExclusionConfiguration = {
   test: /\.js$/,
   exclude:
     /node_modules\/(?!(react-native-elements|react-native-vector-icons)\/).*/,
-  loader: "babel-loader"
+  loader: 'babel-loader'
 }
 
 const urlLoaderConfiguration = {
   test: /\.ttf$/,
-  loader: "url-loader",
-  include: path.resolve(__dirname, "node_modules/react-native-vector-icons")
+  loader: 'url-loader',
+  include: path.resolve(__dirname, 'node_modules/react-native-vector-icons')
 }
 
 module.exports = {
@@ -113,14 +113,14 @@ module.exports = {
     // load any web API polyfills
     // path.resolve(appDirectory, 'polyfills-web.js'),
     // your web-specific entry file
-    "@babel/polyfill",
-    path.resolve(appDirectory, "index.js")
+    '@babel/polyfill',
+    path.resolve(appDirectory, 'index.js')
   ],
 
   // configures where the build ends up
   output: {
-    filename: "bundle.[hash].js",
-    path: path.resolve(appDirectory, "backend", "web_build"),
+    filename: 'bundle.[hash].js',
+    path: path.resolve(appDirectory, 'backend', 'web_build'),
     clean: true
   },
 
@@ -138,17 +138,17 @@ module.exports = {
   plugins: [HTMLWebpackPluginConfig, DevEnvPlugin, JestWorkerPlugin],
   resolve: {
     alias: {
-      "react-native$": "react-native-web",
-      "@modules": path.resolve(appDirectory, "modules"),
-      "@screens": path.resolve(appDirectory, "screens"),
-      "@options": path.resolve(appDirectory, "options"),
-      "@store": path.resolve(appDirectory, "store"),
-      "@components": path.resolve(appDirectory, "components"),
-      "@helpers": path.resolve(appDirectory, "helpers")
+      'react-native$': 'react-native-web',
+      '@modules': path.resolve(appDirectory, 'modules'),
+      '@screens': path.resolve(appDirectory, 'screens'),
+      '@options': path.resolve(appDirectory, 'options'),
+      '@store': path.resolve(appDirectory, 'store'),
+      '@components': path.resolve(appDirectory, 'components'),
+      '@helpers': path.resolve(appDirectory, 'helpers')
     },
     // If you're working on a multi-platform React Native app, web-specific
     // module implementations should be written in files using the extension
     // `.web.js`.
-    extensions: [".web.js", ".js", ".ts", ".jsx", ".tsx"]
+    extensions: ['.web.js', '.js', '.ts', '.jsx', '.tsx']
   }
 }

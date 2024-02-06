@@ -1,20 +1,13 @@
+import Prettierrc from './.prettierrc'
 module.exports = {
   root: true,
-  extends: "@react-native-community",
+  extends: '@react-native-community',
   rules: {
-    "prettier/prettier": [
-      "error",
+    'prettier/prettier': ['error', Prettierrc],
+    'react-hooks/exhaustive-deps': [
+      'error',
       {
-        semi: false,
-        parser: "babel",
-        trailingComma: "none",
-        arrowParens: "avoid"
-      }
-    ],
-    "react-hooks/exhaustive-deps": [
-      "error",
-      {
-        additionalHooks: "(useAnimatedStyle|useDerivedValue|useAnimatedProps)"
+        additionalHooks: '(useAnimatedStyle|useDerivedValue|useAnimatedProps)'
       }
     ]
   }

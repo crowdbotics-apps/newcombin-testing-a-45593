@@ -1,34 +1,43 @@
-import React from "react";
-import { View, Image, Text, ScrollView, SafeAreaView, StyleSheet } from "react-native";
+import React from 'react'
+import {
+  View,
+  Image,
+  Text,
+  ScrollView,
+  SafeAreaView,
+  StyleSheet
+} from 'react-native'
 
 const WelcomeScreen = () => {
-  return <SafeAreaView style={styles.container}>
+  return (
+    <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <View style={styles.group} />
         <View style={styles.group}>
-          <Image style={styles.logo} source={require("./logo.png")} />
+          <Image style={styles.logo} source={require('./logo.png')} />
           <Text style={styles.text}>
             Let's build something amazing together!
           </Text>
         </View>
         <Text style={styles.footer}>Made with ❤️ by Crowdbotics</Text>
       </ScrollView>
-    </SafeAreaView>;
-};
+    </SafeAreaView>
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#F8F8FC",
-    height: "100%"
+    backgroundColor: '#F8F8FC',
+    height: '100%'
   },
   scrollView: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "space-between",
+    alignItems: 'center',
+    justifyContent: 'space-between',
     padding: 20
   },
   group: {
-    alignItems: "center"
+    alignItems: 'center'
   },
   logo: {
     height: 180,
@@ -38,17 +47,17 @@ const styles = StyleSheet.create({
     margin: 40
   },
   text: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 28,
-    color: "#828AB0",
+    color: '#828AB0',
     fontWeight: 700
   },
   footer: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 18,
-    color: "#828AB0",
+    color: '#828AB0',
     fontWeight: 700,
     marginBottom: 20
   }
-});
-export default WelcomeScreen;
+})
+export default WelcomeScreen

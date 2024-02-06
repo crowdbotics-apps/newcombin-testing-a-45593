@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react"
+import { useState, useCallback, useEffect } from 'react'
 
 /**
  * Get the layout values for the current component, and the callback for updating it.
@@ -24,7 +24,7 @@ export function useComponentLayout() {
  * @returns {boolean}
  */
 export const useMatchMedia = query => {
-  if (!window) throw new Error("useMatchMedia can only be used on web")
+  if (!window) throw new Error('useMatchMedia can only be used on web')
   const mediaMatch = window.matchMedia(query)
   const [matches, setMatches] = useState(mediaMatch.matches)
 

@@ -4,24 +4,24 @@
  *
  * @format
  */
-const path = require("path")
+const path = require('path')
 
 const extraNodeModules = {
-  "@components": path.resolve(__dirname, "components"),
-  "@modules": path.resolve(__dirname, "modules"),
-  "@screens": path.resolve(__dirname, "screens"),
-  "@options": path.resolve(__dirname, "options"),
-  "@store": path.resolve(__dirname, "store"),
-  "@helpers": path.resolve(__dirname, "helpers")
+  '@components': path.resolve(__dirname, 'components'),
+  '@modules': path.resolve(__dirname, 'modules'),
+  '@screens': path.resolve(__dirname, 'screens'),
+  '@options': path.resolve(__dirname, 'options'),
+  '@store': path.resolve(__dirname, 'store'),
+  '@helpers': path.resolve(__dirname, 'helpers')
 }
 
 const watchFolders = [
-  path.resolve(__dirname, "components"),
-  path.resolve(__dirname, "modules"),
-  path.resolve(__dirname, "screens"),
-  path.resolve(__dirname, "options"),
-  path.resolve(__dirname, "store"),
-  path.resolve(__dirname, "helpers")
+  path.resolve(__dirname, 'components'),
+  path.resolve(__dirname, 'modules'),
+  path.resolve(__dirname, 'screens'),
+  path.resolve(__dirname, 'options'),
+  path.resolve(__dirname, 'store'),
+  path.resolve(__dirname, 'helpers')
 ]
 
 module.exports = {
@@ -34,13 +34,13 @@ module.exports = {
     })
   },
   resolver: {
-    sourceExts: ["js", "jsx", "ts", "tsx", "json"],
+    sourceExts: ['js', 'jsx', 'ts', 'tsx', 'json'],
     extraNodeModules: new Proxy(extraNodeModules, {
       get: (target, name) =>
         //redirects dependencies referenced from extraNodeModules to local node_modules
         name in target
           ? target[name]
-          : path.join(process.cwd(), "node_modules", name)
+          : path.join(process.cwd(), 'node_modules', name)
     })
   },
   watchFolders,
