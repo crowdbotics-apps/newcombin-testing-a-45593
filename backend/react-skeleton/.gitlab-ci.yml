@@ -1,0 +1,32 @@
+stages:
+  - lint
+
+eslint:
+  stage: lint
+  image: node:latest # latest Node.js image
+  before_script:
+    - npm install # install dependencies
+  script:
+    - npm run lint # ESLint run
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' # Only run this task for merge requests
+      when: always
+    - if: '$CI_COMMIT_REF_NAME == "main"' # Or the main branch
+      when: always
+    - if: '$CI_COMMIT_REF_NAME == "prod"' # Or the prod branch
+      when: always
+
+typescript:
+  stage: lint
+  image: node:latest # latest Node.js image
+  before_script:
+    - npm install # install dependencies
+  script:
+    - npm run typecheck # Typescript run
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' # Only run this task for merge requests
+      when: always
+    - if: '$CI_COMMIT_REF_NAME == "main"' # Or the main branch
+      when: always
+    - if: '$CI_COMMIT_REF_NAME == "prod"' # Or the prod branch
+      when: always
