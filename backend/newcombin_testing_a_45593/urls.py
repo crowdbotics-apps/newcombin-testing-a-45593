@@ -44,5 +44,5 @@ urlpatterns += [
     path("api-docs/", SpectacularSwaggerView.as_view(url_name='schema'), name="api_docs")
 ]
 
-
-urlpatterns += [re_path(r".*",TemplateView.as_view(template_name='index.html'))]
+urlpatterns += [path("", TemplateView.as_view(template_name='index.html'))]
+urlpatterns += [re_path(r"^(?!static)(?:.*)/?$",TemplateView.as_view(template_name='index.html'))]
